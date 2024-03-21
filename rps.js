@@ -11,8 +11,20 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice())
+let computerChoice = getComputerChoice()
 
 function game(player, computer) {
-    if (player = 'rock'||'')
-    console.log()
+     computer = getComputerChoice()
+
+    if (computer === "rock"  player === "scissors")
+        console.log("Computer wins")
+
+
 }
+
+
+
+
+
+
+game(playerChoice, computerChoice)
