@@ -1,52 +1,39 @@
 const Userscore = 0;
 const computerScore = 0;
+const scoreBoard = document.querySelector("results")
+const userScore_span = document.querySelector("result-score");
+const computerScore_span = document.getElementById("result-score1");
 const rockdiv = document.getElementById("r");
 const paperdiv = document.getElementById("p");
 const scissorsdiv = document.getElementById("s");
 
-function game(userChoice) {
-    bruh + userChoice
-}
-
-rockdiv.addEventListener('click', function() {
-    console.log("You clcked on rock")
-} )
-
-paperdiv.addEventListener('click', function() {
-    console.log("You clcked on paper")
-} )
-
-scissorsdiv.addEventListener('click', function() {
-    console.log("You clcked on scissors")
-} )
-
-
-
 function getComputerChoice() {
-    let choice = Math.random() 
-        if (choice <= 0.33) {
-            choice = "rock"
-        } else if (choice <= 0.66) {
-            choice = "scissors"
-        } else {
-            choice = "paper"
-        }
-        return choice
+    const choices = ['r', 'p', 's']
+    const randomNumber = Math.floor(Math.random()*3);
+    return choices[randomNumber]
 }
 
-console.log(getComputerChoice())
-let computerChoice = getComputerChoice()
+function game(userChoice) {
+    const computerChoice = getComputerChoice()
+    switch (userChoice + computerChoice) {
 
-function game(player, computer) {
-     computer = getComputerChoice()
-
-    if (computer === "rock" || player === "scissors")
-        console.log("Computer wins")
-
-
+    }
 }
 
 
+function main() {
+    rockdiv.addEventListener('click', function() {
+        game("r")
+    } )
 
+    paperdiv.addEventListener('click', function() {
+        game("p")
+    } )
 
-game(playerChoice, computerChoice)
+    scissorsdiv.addEventListener('click', function() {
+        game("s")
+    } )
+}
+
+main(); 
+
