@@ -1,34 +1,42 @@
-
 let userScore = 0;
-const computerScore = 0;
+let computerScore = 0;    
 const scoreBoard = document.querySelector("results")
 let userScore_span = document.querySelector(".result-score");
 let computerScore_span = document.querySelector(".result-score1");
+let result = document.querySelector(".directions")
 const rockdiv = document.getElementById("r");
 const paperdiv = document.getElementById("p");
 const scissorsdiv = document.getElementById("s");
 
-
-function win() {
-    userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span = computerScore;
+function convertToWord(letter) {
+    if (letter === "r") return "rock";
+    if (letter === "s") return "scissors";
+    if (letter === "p") return "paper";
 }
 
+function win(userChoice, computerChoice) {
+    userScore++;  
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+    result.innerHTML = "YOU WIN! " + convertToWord(userChoice) + " beats " + convertToWord(computerChoice);
+}
+
+function lose(userChoice, computerChoice) {
+    computerScore++;
+    computerScore_span.innerHTML = computerScore;
+    result.innerHTML = convertToWord(computerChoice) + " beats " + convertToWord(userChoice);
+}
+
+function draw(userChoice, computerChoice) {
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+    result.innerHTML = "DRAW " + convertToWord(userChoice) + "-" + convertToWord(computerChoice);
+}
 
 function getComputerChoice() {
     const choices = ['r', 'p', 's']
     const randomNumber = Math.floor(Math.random()*3);
     return choices[randomNumber]
-}
-
-
-function lose() {
-    console.log("LOSS")
-}
-
-function draw() {
-    console.log("DRAW")
 }
 
 function game(userChoice) {
@@ -37,17 +45,17 @@ function game(userChoice) {
         case "rs":
         case "pr":
         case "sp":
-            win();
+            win(userChoice, computerChoice);
             break;
         case "rp":
         case "sr":
         case "ps":
-            lose();
+            lose(userChoice, computerChoice);
             break;
         case "rr":
         case "ss":
         case "pp":
-            draw();
+            draw(userChoice, computerChoice);
             break;
     }
 }
